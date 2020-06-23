@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM frolvlad/alpine-glibc:alpine-3.12
 
 ARG VCS_REF
 ARG BUILD_DATE
