@@ -18,7 +18,7 @@ ENV KUBE_LATEST_VERSION="v1.18.3"
 ENV HELM_VERSION="v3.2.4"
 # Note: Latest version of oc may be found at
 # https://github.com/openshift/origin/releases
-ENV OC_VERSION="3.11.0"
+ENV OC_VERSION="4.6"
 
 RUN apk add --no-cache ca-certificates bash git openssh curl \
     && wget -q https://storage.googleapis.com/kubernetes-release/release/${KUBE_LATEST_VERSION}/bin/linux/amd64/kubectl -O /usr/local/bin/kubectl \
