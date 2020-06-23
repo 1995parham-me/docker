@@ -1,4 +1,6 @@
 # helm-kubectl-oc
+[![Drone (cloud)](https://img.shields.io/drone/build/1995parham/helm-kubectl-oc.svg?style=flat-square)](https://cloud.drone.io/1995parham/helm-kubectl-oc)
+
 ## Introduction
 We need Helm, Kubectl and Openshift Client at the same time for Gitlab-CI so I have created this repository.
 
