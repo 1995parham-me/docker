@@ -5,9 +5,9 @@ ARG BUILD_DATE
 
 # Metadata
 LABEL org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.name="helm-kubectl" \
-      org.label-schema.url="https://hub.docker.com/r/dtzar/helm-kubectl/" \
-      org.label-schema.vcs-url="https://github.com/dtzar/helm-kubectl" \
+      org.label-schema.name="helm-kubectl-oc" \
+      org.label-schema.url="https://hub.docker.com/r/1995parham/helm-kubectl-oc/" \
+      org.label-schema.vcs-url="https://github.com/1995parham/helm-kubectl-oc" \
       org.label-schema.build-date=$BUILD_DATE
 
 # Note: Latest version of kubectl may be found at:
