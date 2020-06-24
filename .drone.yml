@@ -20,7 +20,7 @@ steps:
       repo: 1995parham/helm-kubectl-oc
       tags:
         - latest
-        - ${DRONE_STEP_NAME##v}
+        - 3.2.4
       build_args_from_env:
         - HELM_VERSION
         - VCS_REF
