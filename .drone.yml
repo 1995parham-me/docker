@@ -7,7 +7,7 @@ environment:
   VCS_REF: ${DRONE_COMMIT_REF}
 
 steps:
-  - name: 3.2.4
+  - name: v3.2.4
     image: plugins/docker
     environment:
       HELM_VERSION: v3.2.4
@@ -20,7 +20,7 @@ steps:
       repo: 1995parham/helm-kubectl-oc
       tags:
         - latest
-        - ${DRONE_STEP_NAME}
+        - ${DRONE_STEP_NAME##v}
       build_args_from_env:
         - HELM_VERSION
         - VCS_REF
