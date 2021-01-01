@@ -26,7 +26,7 @@ build() {
           --build-arg VCS_REF=${TRAVIS_COMMIT} --build-arg BUILD_DATE="$(date)" \
           $(if [[ $latest == true ]]; then echo "-t ${image}:latest"; fi) -t ${image}:${tag} .
 
-  # run test
+  # run test with helm
   version=$(docker run -ti --rm ${image}:${tag} helm version --client)
   echo $version
   # Client: &version.Version{SemVer:"v2.9.0-rc2", GitCommit:"08db2d0181f4ce394513c32ba1aee7ffc6bc3326", GitTreeState:"clean"}
@@ -43,8 +43,12 @@ build() {
     exit
   fi
 
-  # run test
-  version=$(docker run -ti --rm ${image}:${tag} oc version --client)
+  # run test with oc
+  if [[ $tag =~ "3" ]]; then
+    version=$tag
+  else
+    version=$(docker run -ti --rm ${image}:${tag} oc version --client)
+  fi
   echo $version
   if [[ "${version}" =~ "${tag}" ]]; then
     echo "matched"
@@ -55,7 +59,7 @@ build() {
 
   if [[ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_PULL_REQUEST" == false ]]; then
     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    docker push ${image}:${tag} --all-tags
+    docker push ${image}:${tag}
   fi
 }
 
