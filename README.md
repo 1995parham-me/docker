@@ -7,6 +7,7 @@
 docker build for Openshift Kubernetes Distribution, it can be used as normal kubectl tool as well.
 based on [alpine/k8s](https://github.com/alpine-docker/k8s).
 images are tagged with their oc version.
+based image is ubuntu, because of its popularity and gcc issues of alpine images.
 
 ## Installed tools
 
