@@ -14,8 +14,19 @@ ARG HELM_VERSION
 ARG OC_VERSION
 
 RUN apt-get update && apt-get install -y ca-certificates bash git curl wget
-RUN wget -q https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz -O - | tar -xzO linux-amd64/helm > /usr/local/bin/helm \
-    && chmod +x /usr/local/bin/helm \
+
+# Install helm (latest release)
+ENV BASE_URL="https://get.helm.sh"
+ENV TAR_FILE="helm-v${HELM_VERSION}-linux-amd64.tar.gz"
+RUN apk add --update --no-cache curl ca-certificates bash git && \
+    curl -L ${BASE_URL}/${TAR_FILE} |tar xvz && \
+    mv linux-amd64/helm /usr/bin/helm && \
+    chmod +x /usr/bin/helm && \
+    rm -rf linux-amd64 && \
+    apk del curl && \
+    rm -f /var/cache/apk/*
+
+# Install openshift-origin-client
 RUN curl -sLo /tmp/oc.tar.gz https://mirror.openshift.com/pub/openshift-v$(echo $OC_VERSION | cut -d'.' -f 1)/clients/oc/$OC_VERSION/linux/oc.tar.gz \
     && tar xzvf /tmp/oc.tar.gz -C /usr/local/bin/ \
     && chmod +x /usr/local/bin/oc \
