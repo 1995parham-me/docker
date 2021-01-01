@@ -1,6 +1,6 @@
 # Kubernetes tools for OKD (Openshift Kubernetes Distribution)
 
-[![Travis branch](https://img.shields.io/travis/com/1995parham/ubunut-okd/master.svg?style=flat-square&logo=travis)](https://travis-ci.com/1995parham/ubuntu-okd)
+[![Travis branch](https://img.shields.io/travis/com/1995parham/ubuntu-okd/master.svg?style=flat-square&logo=travis)](https://travis-ci.com/1995parham/ubuntu-okd)
 
 ## Introduction
 
