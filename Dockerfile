@@ -28,7 +28,7 @@ RUN curl -sLo /tmp/oc.tar.gz https://mirror.openshift.com/pub/openshift-v$(echo 
     && tar xzvf /tmp/oc.tar.gz -C /usr/local/bin/ \
     && chmod +x /usr/local/bin/oc \
     && rm -rf /tmp/oc.tar.gz \
-    && ln -s /usr/local/bin/oc /usr/loca/bin/kubectl
+    && ln -s /usr/local/bin/oc /usr/local/bin/kubectl
 
 WORKDIR /data
 
