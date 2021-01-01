@@ -24,7 +24,7 @@ build() {
 
   docker build --no-cache --build-arg OC_VERSION=${tag} --build-arg HELM_VERSION=${helm} \
           --build-arg VCS_REF=${TRAVIS_COMMIT} --build-arg BUILD_DATE="$(date)" \
-          $(if [[ $latest == true ]]; then echo "-t ${image}:latest"; fi) -t ${image}:${tag} .
+          -t ${image}:${tag} .
 
   # run test with helm
   version=$(docker run -ti --rm ${image}:${tag} helm version --client)
@@ -60,6 +60,10 @@ build() {
   if [[ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_PULL_REQUEST" == false ]]; then
     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     docker push ${image}:${tag}
+    if [[ $latest == true ]]; then
+      docker tag ${image}:${tag} ${image}:latest
+      docker push ${image}:latest
+    fi
   fi
 }
 
