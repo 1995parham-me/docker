@@ -45,8 +45,7 @@ build() {
   # run test
   version=$(docker run -ti --rm ${image}:${tag} oc version --client)
   echo $version
-  version=$(echo ${version}| awk -F \" '{print $2}')
-  if [ "${version}" == "v${helm}" ]; then
+  if [ "${version}" =~ "${tag}" ]; then
     echo "matched"
   else
     echo "unmatched"
