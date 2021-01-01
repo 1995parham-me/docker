@@ -10,5 +10,5 @@ script:
   - bash ./build.sh
 
 env:
-  - tag=3.11.0
-  - tag=4.6.0
+  - tag=3.11
+  - tag=4.6
