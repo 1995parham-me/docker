@@ -24,8 +24,8 @@ RUN curl -L ${BASE_URL}/${TAR_FILE} | tar xvz && \
     rm -rf linux-amd64
 
 # Install openshift-origin-client
-RUN OC_MAJOR_VERSION=$($OC_VERSION | cut -d'.' -f 1) \
-    && curl -sLo /tmp/oc.tar.gz https://mirror.openshift.com/pub/openshift-v$OC_MAJOR_VERSION/clients/$(if [ "$OC_MAJOR_VERSION" == "3" ]; then echo "oc/"; fi)$OC_VERSION/linux/oc.tar.gz \
+RUN OC_MAJOR_VERSION=$(echo $OC_VERSION | cut -d'.' -f 1) \
+    && curl -sLo /tmp/oc.tar.gz https://mirror.openshift.com/pub/openshift-v$OC_MAJOR_VERSION/clients/$(if [ "$OC_MAJOR_VERSION" == "4" ]; then echo "oc/"; fi)$OC_VERSION/linux/oc.tar.gz \
     && tar xzvf /tmp/oc.tar.gz -C /usr/local/bin/ \
     && chmod +x /usr/local/bin/oc \
     && chmod +x /usr/local/bin/kubectl \
