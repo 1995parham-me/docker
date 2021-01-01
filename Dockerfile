@@ -28,7 +28,7 @@ RUN OC_MAJOR_VERSION=$(echo $OC_VERSION | cut -d'.' -f 1) \
     && curl -sLo /tmp/oc.tar.gz https://mirror.openshift.com/pub/openshift-v$OC_MAJOR_VERSION/clients/$(if [ $OC_MAJOR_VERSION = "4" ]; then echo "oc/"; fi)$OC_VERSION/linux/oc.tar.gz \
     && tar xzvf /tmp/oc.tar.gz -C /usr/local/bin/ \
     && chmod +x /usr/local/bin/oc \
-    && chmod +x /usr/local/bin/kubectl \
+    && if [ $OC_MAJOR_VERSION = "4" ]; then chmod +x /usr/local/bin/kubectl; fi \
     && rm -rf /tmp/oc.tar.gz \
 
 WORKDIR /data

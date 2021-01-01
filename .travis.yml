@@ -11,4 +11,4 @@ script:
 
 env:
   - tag=3.11.346
-  - tag=4.6
+  - tag=4.6 latest=true
