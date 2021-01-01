@@ -1,6 +1,14 @@
 # Kubernetes tools for OKD (Openshift Kubernetes Distribution)
 
 [![Travis branch](https://img.shields.io/travis/com/1995parham/ubuntu-okd/master.svg?style=flat-square&logo=travis)](https://travis-ci.com/1995parham/ubuntu-okd)
+![Docker Pulls](https://img.shields.io/docker/pulls/1995parham/ubuntu-okd?style=flat-square&logo=docker)
+
+## Tags
+### 4.6
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/1995parham/ubuntu-okd/4.6?style=flat-square&logo=docker)
+
+### 3.11.346
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/1995parham/ubuntu-okd/3.11.346?style=flat-square&logo=docker)
 
 ## Introduction
 
