@@ -22,7 +22,7 @@ build() {
   helm=$(echo $helm\" |grep -oP '(?<=tag\/v)[0-9][^"]*'|grep -v \-|sort -Vr|head -1)
   echo $helm
 
-  docker build --no-cache --build-arg OC_VERSION=${tag} --build-arg HELM_VERSION=${helm} -t ${image}:${tag} .
+  docker build --no-cache --build-arg OC_VERSION=${tag} --build-arg HELM_VERSION=${helm} --build-arg VCS_REF=${TRAVIS_COMMIT} --build-arg BUILD_DATE=$(date) -t ${image}:${tag} .
 
   # run test
   version=$(docker run -ti --rm ${image}:${tag} helm version --client)
