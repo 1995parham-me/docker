@@ -18,13 +18,14 @@ RUN apt-get update && apt-get install -y ca-certificates bash git curl wget
 # Install helm (latest release)
 ENV BASE_URL="https://get.helm.sh"
 ENV TAR_FILE="helm-v${HELM_VERSION}-linux-amd64.tar.gz"
-RUN curl -L ${BASE_URL}/${TAR_FILE} |tar xvz && \
+RUN curl -L ${BASE_URL}/${TAR_FILE} | tar xvz && \
     mv linux-amd64/helm /usr/bin/helm && \
     chmod +x /usr/bin/helm && \
     rm -rf linux-amd64
 
 # Install openshift-origin-client
-RUN curl -sLo /tmp/oc.tar.gz https://mirror.openshift.com/pub/openshift-v$(echo $OC_VERSION | cut -d'.' -f 1)/clients/$(if [[ $OC_VERSION =~ "3" ]]; then echo "oc/"; fi)$OC_VERSION/linux/oc.tar.gz \
+RUN OC_MAJOR_VERSION=$($OC_VERSION | cut -d'.' -f 1) \
+    && curl -sLo /tmp/oc.tar.gz https://mirror.openshift.com/pub/openshift-v$OC_MAJOR_VERSION/clients/$(if [ $OC_MAJOR_VERSION == "3" ]; then echo "oc/"; fi)$OC_VERSION/linux/oc.tar.gz \
     && tar xzvf /tmp/oc.tar.gz -C /usr/local/bin/ \
     && chmod +x /usr/local/bin/oc \
     && chmod +x /usr/local/bin/kubectl \
