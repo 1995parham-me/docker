@@ -11,7 +11,7 @@ RUN apk add --update --no-cache \
       bind-tools \
       bat \
       curlie \
-      dog \
+      # dog \
       jq \
       yq
 
