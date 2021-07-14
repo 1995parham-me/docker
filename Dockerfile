@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:edge
 
 RUN apk add --update --no-cache \
   ca-certificates \
@@ -14,6 +14,5 @@ RUN apk add --update --no-cache \
   dog \
   jq \
   yq
-
 
 ENTRYPOINT [ "/bin/zsh" ]
