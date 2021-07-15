@@ -15,6 +15,10 @@ function box_name {
   [ -f ~/.box-name ] && cat ~/.box-name || hostname -s
 }
 
+function get_kernel_version() {
+  uname -rs
+}
+
 # http://blog.joshdick.net/2012/12/30/my_git_prompt_for_zsh.html
 # copied from https://gist.github.com/4415470
 # Adapted from code found at <https://gist.github.com/1712320>.
