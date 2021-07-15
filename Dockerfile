@@ -11,8 +11,14 @@ RUN apk add --update --no-cache \
       bind-tools \
       bat \
       curlie \
+      vim \
       # dog \
       jq \
       yq
+
+RUN adduser -g 'Parham Alvani' -D -s /bin/zsh parham
+USER parham
+
+COPY zshrc /home/parham/.zshrc
 
 ENTRYPOINT [ "/bin/zsh" ]
