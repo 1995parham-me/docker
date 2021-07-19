@@ -16,9 +16,6 @@ RUN apk add --update --no-cache \
   jq \
   yq
 
-RUN adduser -g 'Parham Alvani' -D -s /bin/zsh parham
-USER parham
-
-COPY zshrc /home/parham/.zshrc
+COPY zshrc /etc/zsh/zshrc
 
 ENTRYPOINT [ "/bin/zsh" ]
