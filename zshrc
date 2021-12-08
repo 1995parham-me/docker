@@ -25,7 +25,7 @@ function get_kernel_version() {
 # copied from https://gist.github.com/4415470
 # Adapted from code found at <https://gist.github.com/1712320>.
 
-#setopt promptsubst
+# setopt promptsubst
 autoload -U colors && colors # Enable colors in prompt
 
 function current_pwd {
