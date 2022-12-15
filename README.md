@@ -1,6 +1,6 @@
 # Docker Image
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/1995parham-me/docker/build?label=build&logo=github&style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/1995parham-me/docker/build.yaml?label=build&logo=github&style=flat-square&branch=main)
 
 ## Introduction
 
