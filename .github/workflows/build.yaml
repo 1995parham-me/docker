@@ -2,8 +2,7 @@
 name: build
 on:
   push: {}
-  schedule:
-    - cron: '0 0 15,30 * *'
+
 jobs:
   lint:
     runs-on: ubuntu-latest
