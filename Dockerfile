@@ -1,14 +1,19 @@
-FROM archlinux:latest
+FROM apline:latest
 
-RUN pacman -Syu --needed --noconfirm \
+RUN apk add --update --no-cache \
+  ca-certificates \
   zsh \
+  net-tools \
   curl \
+  busybox-extras \
   mtr \
+  iputils \
+  bind-tools \
   bat \
-  jq \
-  dog \
   curlie \
-  neovim \
+  dog \
+  jq \
   yq
+
 
 ENTRYPOINT [ "/bin/zsh" ]
