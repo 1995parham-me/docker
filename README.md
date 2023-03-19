@@ -8,7 +8,7 @@
 
 # How to 
 
-You can run the debug pod as follow:
+You can run the debug pod as follow on Kubernetes:
 
 ```sh
 kubectl run 1995parham --image=ghcr.io/1995parham-me/docker:latest --image-pull-policy=Always --rm -it --restart=Never --command --timeout 10m -- <command>
