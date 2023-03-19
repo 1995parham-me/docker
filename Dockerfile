@@ -12,9 +12,11 @@ RUN apk add --update --no-cache \
   bat \
   curlie \
   vim \
-  # dog \
   jq \
   yq
+
+RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+  dog
 
 COPY zshrc /etc/zsh/zshrc
 
