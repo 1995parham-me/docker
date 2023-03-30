@@ -13,6 +13,5 @@ attach to it and start investigating. This image is create for those hard times.
 You can run the debug pod as follows on Kubernetes:
 
 ```bash
-sh
 kubectl run 1995parham --image=ghcr.io/1995parham-me/docker:latest --image-pull-policy=Always --rm -it --restart=Never --command --timeout 10m -- <command>
 ```
