@@ -1,6 +1,8 @@
-# The 1995parham's Docker Image
+<h1 align="center"> The 1995parham's Docker Image </h1>
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/1995parham-me/docker/build.yaml?label=build&logo=github&style=flat-square&branch=main)
+<p align="center">
+  <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/1995parham-me/docker/build.yaml?logo=github&style=for-the-badge">
+</p>
 
 ## Introduction
 
