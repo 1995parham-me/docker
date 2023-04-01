@@ -40,3 +40,7 @@ $(prompt_char) '
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color [(y)es (n)o (a)bort (e)dit]? "
 
 RPROMPT='${PR_GREEN}%@%{$reset_color%} ${PR_RED}$(get_kernel_version)%{$reset_color%}'
+
+echo "Welcome to the 1995parham's parham docker"
+echo "$(cat /build-date.txt)"
+echo

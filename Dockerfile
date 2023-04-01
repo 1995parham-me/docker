@@ -24,4 +24,6 @@ COPY --from=natsio/nats-box:latest /usr/local/bin/stan-pub /usr/loca/bin/stan-pu
 COPY --from=natsio/nats-box:latest /usr/local/bin/stan-sub /usr/loca/bin/stan-sub
 COPY --from=natsio/nats-box:latest /usr/local/bin/stan-bench /usr/loca/bin/stan-bench
 
+RUN date >/build-date.txt
+
 ENTRYPOINT [ "/bin/zsh" ]
