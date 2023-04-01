@@ -18,11 +18,11 @@ RUN apk add --update --no-cache \
 
 COPY zshrc /etc/zsh/zshrc
 
-COPY --from=natsio/nats-box:latest /usr/local/bin/nats /usr/loca/bin/nats
-COPY --from=natsio/nats-box:latest /usr/local/bin/nats-top /usr/loca/bin/nats-top
-COPY --from=natsio/nats-box:latest /usr/local/bin/stan-pub /usr/loca/bin/stan-pub
-COPY --from=natsio/nats-box:latest /usr/local/bin/stan-sub /usr/loca/bin/stan-sub
-COPY --from=natsio/nats-box:latest /usr/local/bin/stan-bench /usr/loca/bin/stan-bench
+COPY --from=natsio/nats-box:latest /usr/local/bin/nats /usr/local/bin/nats
+COPY --from=natsio/nats-box:latest /usr/local/bin/nats-top /usr/local/bin/nats-top
+COPY --from=natsio/nats-box:latest /usr/local/bin/stan-pub /usr/local/bin/stan-pub
+COPY --from=natsio/nats-box:latest /usr/local/bin/stan-sub /usr/local/bin/stan-sub
+COPY --from=natsio/nats-box:latest /usr/local/bin/stan-bench /usr/local/bin/stan-bench
 
 RUN date >/build-date.txt
 
