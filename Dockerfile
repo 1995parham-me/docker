@@ -14,6 +14,8 @@ RUN apk add --update --no-cache \
   vim \
   jq \
   dog \
+  mycli \
+  pgcli \
   yq
 
 COPY zshrc /etc/zsh/zshrc
