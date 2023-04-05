@@ -26,6 +26,8 @@ COPY --from=natsio/nats-box:latest /usr/local/bin/stan-pub /usr/local/bin/stan-p
 COPY --from=natsio/nats-box:latest /usr/local/bin/stan-sub /usr/local/bin/stan-sub
 COPY --from=natsio/nats-box:latest /usr/local/bin/stan-bench /usr/local/bin/stan-bench
 
-RUN date >/build-date.txt
+RUN date >/build-date.txt; \
+  touch /.mycli.log && chmod 0666 /.mycli.log; \
+  touch /.myclirc && chmod 0666 /.myclirc
 
 ENTRYPOINT [ "/bin/zsh" ]
