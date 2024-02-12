@@ -16,6 +16,7 @@ RUN apk add --update --no-cache \
   dog \
   mycli \
   pgcli \
+  starship \
   yq
 
 COPY zshrc /etc/zsh/zshrc
