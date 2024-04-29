@@ -1,23 +1,31 @@
 FROM alpine:3.19
 
+RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.6/main' >> /etc/apk/repositories && \
+    echo 'http://dl-cdn.alpinelinux.org/alpine/v3.6/community' >> /etc/apk/repositories
+
 RUN apk add --update --no-cache \
   ca-certificates \
-  zsh \
-  net-tools \
-  curl \
   busybox-extras \
+  curl \
+  curlie \
   mtr \
   iputils \
   bind-tools \
-  bat \
-  curlie \
-  vim \
-  jq \
-  bind-tools \
-  mycli \
-  pgcli \
+  net-tools \
+  zsh \
   starship \
-  yq
+  vim \
+  nano \
+  bat \
+  jq \
+  yq \
+  redis \
+  mariadb-client \
+  mycli \
+  postgresql \
+  pgcli \
+  mongodb \
+  mongodb-tools
 
 COPY zshrc /etc/zsh/zshrc
 
