@@ -1,7 +1,7 @@
 FROM alpine:3.19
 
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.6/main' >> /etc/apk/repositories && \
-    echo 'http://dl-cdn.alpinelinux.org/alpine/v3.6/community' >> /etc/apk/repositories
+RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.19/main' >> /etc/apk/repositories && \
+  echo 'http://dl-cdn.alpinelinux.org/alpine/v3.19/community' >> /etc/apk/repositories
 
 RUN apk add --update --no-cache \
   ca-certificates \
@@ -19,6 +19,7 @@ RUN apk add --update --no-cache \
   bat \
   jq \
   yq \
+  git \
   redis \
   mariadb-client \
   mycli \
@@ -32,9 +33,14 @@ COPY zshrc /etc/zsh/zshrc
 COPY --from=natsio/nats-box:latest /usr/local/bin/nats /usr/local/bin/nats
 COPY --from=natsio/nats-box:latest /usr/local/bin/nats-top /usr/local/bin/nats-top
 
+# hadolint ignore=DL3003
+RUN mkdir -p ~/.vim/pack/tpope/start && cd ~/.vim/pack/tpope/start && git clone https://tpope.io/vim/sensible.git
+
 RUN date >/build-date.txt; \
   touch /.mycli.log && chmod 0666 /.mycli.log; \
   touch /.myclirc && chmod 0666 /.myclirc; \
   touch /.mycli-history && chmod 0666 /.mycli-history
+
+WORKDIR /
 
 ENTRYPOINT [ "/bin/zsh" ]
