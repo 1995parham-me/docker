@@ -13,7 +13,7 @@ RUN apk add --update --no-cache \
   curlie \
   vim \
   jq \
-  dog \
+  bind-tools \
   mycli \
   pgcli \
   starship \
