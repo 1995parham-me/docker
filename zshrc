@@ -21,4 +21,5 @@ function get_kernel_version() {
   uname -rs
 }
 
-eval "$(starship init zsh)"
+PS1='%F{red}%/%f $ ' 
+export RPROMPT="%F{241}%B%t%b%f"
