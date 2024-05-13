@@ -14,7 +14,7 @@ RUN apk add --update --no-cache \
   bind-tools \
   net-tools \
   zsh \
-  starship \
+  bash \
   vim \
   nano \
   bat \
