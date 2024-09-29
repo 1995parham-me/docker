@@ -2,6 +2,7 @@ bindkey -v
 autoload edit-command-line; zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 alias vi="vim"
+alias pgcli="XDG_CONFIG_HOME=/tmp pgcli"
 
 EDITOR="$(which vim)"
 export EDITOR
@@ -21,5 +22,5 @@ function get_kernel_version() {
   uname -rs
 }
 
-PS1='%F{red}%/%f $ ' 
+PS1='%F{red}%/%f $ '
 export RPROMPT="%F{241}%B%t%b%f"
