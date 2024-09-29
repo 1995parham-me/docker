@@ -2,7 +2,7 @@ bindkey -v
 autoload edit-command-line; zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 alias vi="vim"
-alias pgcli="PGCLIRC=/tmp/pgcli_config  pgcli"
+alias pgcli="XDG_CONFIG_HOME=/tmp pgcli"
 
 EDITOR="$(which vim)"
 export EDITOR
