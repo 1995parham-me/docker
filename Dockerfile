@@ -32,7 +32,6 @@ RUN apk add --update --no-cache \
 COPY zshrc /etc/zsh/zshrc
 
 COPY --from=natsio/nats-box:latest /usr/local/bin/nats /usr/local/bin/nats
-COPY --from=natsio/nats-box:latest /usr/local/bin/nats-top /usr/local/bin/nats-top
 
 # hadolint ignore=DL3003
 RUN mkdir -p ~/.vim/pack/tpope/start && cd ~/.vim/pack/tpope/start && git clone https://tpope.io/vim/sensible.git
