@@ -14,7 +14,6 @@ RUN apk add --update --no-cache \
   bind-tools \
   net-tools \
   zsh \
-  bash \
   vim \
   nano \
   bat \
@@ -34,13 +33,13 @@ COPY zshrc /etc/zsh/zshrc
 COPY --from=natsio/nats-box:latest /usr/local/bin/nats /usr/local/bin/nats
 
 # hadolint ignore=DL3003
-RUN mkdir -p ~/.vim/pack/tpope/start && cd ~/.vim/pack/tpope/start && git clone https://tpope.io/vim/sensible.git
+RUN mkdir -p /root/.vim/pack/tpope/start && cd /root/.vim/pack/tpope/start && git clone https://tpope.io/vim/sensible.git
 
-RUN date >/build-date.txt; \
-  touch /.mycli.log && chmod 0666 /.mycli.log; \
-  touch /.myclirc && chmod 0666 /.myclirc; \
-  touch /.mycli-history && chmod 0666 /.mycli-history
+RUN date >/build-date.txt
 
-WORKDIR /
+# Fix permissions for OpenShift and tshark
+RUN chmod -R g=u /root
+
+WORKDIR /root
 
 ENTRYPOINT [ "/bin/zsh" ]
