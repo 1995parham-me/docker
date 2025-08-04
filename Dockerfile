@@ -42,4 +42,6 @@ RUN chmod -R g=u /root
 
 WORKDIR /root
 
+ENV HOME /root
+
 ENTRYPOINT [ "/bin/zsh" ]
