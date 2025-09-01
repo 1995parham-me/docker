@@ -26,7 +26,8 @@ RUN apk add --update --no-cache \
   postgresql \
   pgcli \
   mongodb \
-  mongodb-tools
+  mongodb-tools \
+  tmux
 
 COPY zshrc /etc/zsh/zshrc
 
