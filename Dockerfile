@@ -26,7 +26,8 @@ RUN apk add --update --no-cache \
   postgresql \
   pgcli \
   mongodb \
-  mongodb-tools
+  mongodb-tools \
+  tmux
 
 COPY zshrc /etc/zsh/zshrc
 
@@ -42,6 +43,6 @@ RUN chmod -R g=u /root
 
 WORKDIR /root
 
-ENV HOME /root
+ENV HOME=/root
 
 ENTRYPOINT [ "/bin/zsh" ]
