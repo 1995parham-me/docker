@@ -30,5 +30,3 @@ clean_box() {
 
 PS1='%F{red}%/%f $ '
 export RPROMPT="%F{241}%B%t%b%f"
-
-eval "$(starship init zsh)"

@@ -4,33 +4,22 @@ FROM alpine:3.22
 RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.6/main' >> /etc/apk/repositories && \
   echo 'http://dl-cdn.alpinelinux.org/alpine/v3.6/community' >> /etc/apk/repositories
 
-# Install base utilities, databases, networking tools, terminal goodies, and languages
 RUN apk add --update --no-cache \
-  # base tools
   ca-certificates \
   busybox-extras \
   curl \
   curlie \
-  git \
-  zsh \
-  vim \
-  nano \
-  bat \
-  tmux \
-  jq \
-  yq \
-  # networking & debugging
   mtr \
   iputils \
   bind-tools \
   net-tools \
-  nmap \
-  tcpdump \
-  tshark \
-  httpie \
-  whois \
-  iperf3 \
-  # databases & clients
+  zsh \
+  vim \
+  nano \
+  bat \
+  jq \
+  yq \
+  git \
   redis \
   mariadb-client \
   mycli \
@@ -38,23 +27,7 @@ RUN apk add --update --no-cache \
   pgcli \
   mongodb \
   mongodb-tools \
-  sqlite \
-  # terminal tools
-  htop \
-  ncdu \
-  fd \
-  ripgrep \
-  fzf \
-  exa \
-  starship \
-  # languages
-  python3 \
-  py3-pip \
-  nodejs \
-  npm \
-  go \
-  rust \
-  cargo
+  tmux
 
 # Copy custom zsh configuration
 COPY zshrc /etc/zsh/zshrc
