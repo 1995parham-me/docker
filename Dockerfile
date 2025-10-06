@@ -7,9 +7,6 @@ LABEL maintainer="parham" \
 # Save build date early to improve layer caching
 RUN date >/build-date.txt
 
-# Install glibc compatibility for MongoDB binaries
-RUN apk add --no-cache libc6-compat
-
 RUN apk add --update --no-cache \
   ca-certificates \
   busybox-extras \
@@ -31,22 +28,15 @@ RUN apk add --update --no-cache \
   mycli \
   postgresql-client \
   pgcli \
-  tmux
+  mongodb-tools \
+  tmux \
+  wget
 
 # Copy custom zsh configuration
 COPY zshrc /etc/zsh/zshrc
 
 # Copy NATS CLI from official nats-box image
 COPY --from=natsio/nats-box:latest /usr/local/bin/nats /usr/local/bin/nats
-
-# Copy MongoDB tools from official MongoDB image
-COPY --from=mongo:latest /usr/bin/mongosh /usr/local/bin/mongosh
-COPY --from=mongo:latest /usr/bin/mongodump /usr/local/bin/mongodump
-COPY --from=mongo:latest /usr/bin/mongoexport /usr/local/bin/mongoexport
-COPY --from=mongo:latest /usr/bin/mongoimport /usr/local/bin/mongoimport
-COPY --from=mongo:latest /usr/bin/mongorestore /usr/local/bin/mongorestore
-COPY --from=mongo:latest /usr/bin/mongostat /usr/local/bin/mongostat
-COPY --from=mongo:latest /usr/bin/mongotop /usr/local/bin/mongotop
 
 # Create non-root user (UID 1000)
 RUN adduser -D -u 1000 -s /bin/zsh fandogh && \
