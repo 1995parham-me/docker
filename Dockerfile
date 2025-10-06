@@ -30,7 +30,14 @@ RUN apk add --update --no-cache \
   pgcli \
   mongodb-tools \
   tmux \
-  wget
+  wget \
+  nodejs \
+  npm
+
+# Install mongosh using npm (requires build tools)
+RUN apk add --no-cache --virtual .build-deps make g++ python3 && \
+  npm install -g mongosh && \
+  apk del .build-deps
 
 # Copy custom zsh configuration
 COPY zshrc /etc/zsh/zshrc
