@@ -32,6 +32,7 @@ RUN apk add --update --no-cache \
   tmux \
   wget \
   nodejs \
+  aws-cli \
   npm
 
 # Install mongosh using npm (requires build tools)
