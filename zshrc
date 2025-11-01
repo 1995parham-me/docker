@@ -1,7 +1,5 @@
-# Vi mode keybindings
-bindkey -v
-autoload edit-command-line; zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
+# Emacs mode keybindings (bash-like)
+bindkey -e
 
 # History configuration
 HISTFILE=~/.zsh_history
