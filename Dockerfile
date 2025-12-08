@@ -1,4 +1,4 @@
-FROM alpine:3.22
+FROM alpine:3.23
 
 LABEL maintainer="parham" \
   description="Cloud-native debugging and testing toolkit with database clients, network tools, and CLI utilities" \
