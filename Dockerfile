@@ -4,7 +4,7 @@ LABEL maintainer="parham" \
   description="Cloud-native debugging and testing toolkit with database clients, network tools, and CLI utilities" \
   org.opencontainers.image.source="https://github.com/1995parham-me/docker"
 
-# Save build date early to improve layer caching
+# Force cache invalidation for fresh package builds
 RUN date >/build-date.txt
 
 RUN apk add --update --no-cache \
@@ -38,6 +38,7 @@ RUN apk add --update --no-cache \
 # Install mongosh using npm (requires build tools)
 RUN apk add --no-cache --virtual .build-deps make g++ python3 && \
   npm install -g mongosh && \
+  npm cache clean --force && \
   apk del .build-deps
 
 # Copy custom zsh configuration
@@ -47,9 +48,7 @@ COPY zshrc /etc/zsh/zshrc
 COPY --from=natsio/nats-box:latest /usr/local/bin/nats /usr/local/bin/nats
 
 # Create non-root user (UID 1000)
-RUN adduser -D -u 1000 -s /bin/zsh fandogh && \
-  mkdir -p /home/fandogh && \
-  chown -R fandogh:fandogh /home/fandogh
+RUN adduser -D -u 1000 -s /bin/zsh fandogh
 
 # Fix permissions (for OpenShift compatibility)
 RUN chmod -R g=u /home/fandogh
