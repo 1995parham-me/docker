@@ -42,7 +42,7 @@ jobs:
             org.opencontainers.image.title=Cloud-native Debug Toolkit
             org.opencontainers.image.description=Cloud-native debugging and testing toolkit with database clients, network tools, and CLI utilities
             org.opencontainers.image.vendor=parham
-      - uses: docker/build-push-action@v6
+      - uses: docker/build-push-action@v7
         with:
           file: "Dockerfile"
           context: .
