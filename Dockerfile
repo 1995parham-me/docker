@@ -4,9 +4,6 @@ LABEL maintainer="parham" \
   description="Cloud-native debugging and testing toolkit with database clients, network tools, and CLI utilities" \
   org.opencontainers.image.source="https://github.com/1995parham-me/docker"
 
-# Force cache invalidation for fresh package builds
-RUN date >/build-date.txt
-
 RUN apk add --update --no-cache \
   ca-certificates \
   busybox-extras \
@@ -33,19 +30,17 @@ RUN apk add --update --no-cache \
   wget \
   nodejs \
   aws-cli \
-  npm
-
-# Install mongosh using npm (requires build tools)
-RUN apk add --no-cache --virtual .build-deps make g++ python3 && \
+  npm \
+  make g++ python3 && \
   npm install -g mongosh && \
   npm cache clean --force && \
-  apk del .build-deps
+  apk del make g++ python3
 
 # Copy custom zsh configuration
 COPY zshrc /etc/zsh/zshrc
 
 # Copy NATS CLI from official nats-box image
-COPY --from=natsio/nats-box:latest /usr/local/bin/nats /usr/local/bin/nats
+COPY --from=natsio/nats-box:0.19.3 /usr/local/bin/nats /usr/local/bin/nats
 
 # Create non-root user (UID 1000)
 RUN adduser -D -u 1000 -s /bin/zsh fandogh
@@ -53,8 +48,11 @@ RUN adduser -D -u 1000 -s /bin/zsh fandogh
 # Fix permissions (for OpenShift compatibility)
 RUN chmod -R g=u /home/fandogh
 
+HEALTHCHECK --interval=30s --timeout=5s CMD [ "true" ]
+
 USER fandogh
 WORKDIR /home/fandogh
 ENV HOME=/home/fandogh
 
+SHELL ["/bin/zsh", "-c"]
 ENTRYPOINT ["/bin/zsh"]
