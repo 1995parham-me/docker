@@ -28,6 +28,7 @@ RUN apk add --update --no-cache \
   mongodb-tools \
   tmux \
   wget \
+  unzip \
   nodejs \
   aws-cli \
   npm \
@@ -39,8 +40,13 @@ RUN apk add --update --no-cache \
 # Copy custom zsh configuration
 COPY zshrc /etc/zsh/zshrc
 
-# Copy NATS CLI from official nats-box image
-COPY --from=natsio/nats-box:0.19.3 /usr/local/bin/nats /usr/local/bin/nats
+# Install NATS CLI from official GitHub releases (avoids stale nats-box image)
+ARG TARGETARCH
+ARG NATS_VERSION=0.3.2
+RUN wget -q "https://github.com/nats-io/natscli/releases/download/v${NATS_VERSION}/nats-${NATS_VERSION}-linux-${TARGETARCH}.zip" -O /tmp/nats.zip && \
+  unzip -o /tmp/nats.zip -d /tmp/nats && \
+  install /tmp/nats/nats /usr/local/bin/nats && \
+  rm -rf /tmp/nats /tmp/nats.zip
 
 # Create non-root user (UID 1000) and fix permissions (for OpenShift compatibility)
 RUN adduser -D -u 1000 -s /bin/zsh fandogh && \
