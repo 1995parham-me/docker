@@ -44,9 +44,9 @@ COPY zshrc /etc/zsh/zshrc
 ARG TARGETARCH
 ARG NATS_VERSION=0.3.2
 RUN wget -q "https://github.com/nats-io/natscli/releases/download/v${NATS_VERSION}/nats-${NATS_VERSION}-linux-${TARGETARCH}.zip" -O /tmp/nats.zip && \
-  unzip -o /tmp/nats.zip -d /tmp/nats && \
-  install /tmp/nats/nats /usr/local/bin/nats && \
-  rm -rf /tmp/nats /tmp/nats.zip
+  unzip -o /tmp/nats.zip -d /tmp && \
+  install "/tmp/nats-${NATS_VERSION}-linux-${TARGETARCH}/nats" /usr/local/bin/nats && \
+  rm -rf "/tmp/nats-${NATS_VERSION}-linux-${TARGETARCH}" /tmp/nats.zip
 
 # Create non-root user (UID 1000) and fix permissions (for OpenShift compatibility)
 RUN adduser -D -u 1000 -s /bin/zsh fandogh && \
