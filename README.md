@@ -2,6 +2,12 @@
 
 <p align="center">
   <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/1995parham-me/docker/build.yaml?logo=github&style=for-the-badge">
+  <img alt="GitHub License" src="https://img.shields.io/github/license/1995parham-me/docker?logo=gnu&style=for-the-badge">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/1995parham-me/docker?logo=github&style=for-the-badge">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/1995parham-me/docker?logo=github&style=for-the-badge">
+  <img alt="Alpine Linux" src="https://img.shields.io/badge/Alpine-3.23-0D597F?logo=alpinelinux&style=for-the-badge">
+  <img alt="Image Version" src="https://ghcr-badge.egpl.dev/1995parham-me/docker/latest_tag?style=for-the-badge&label=version&color=44cc11">
+  <img alt="Image Size" src="https://ghcr-badge.egpl.dev/1995parham-me/docker/size?style=for-the-badge&label=image+size&color=44cc11">
 </p>
 
 ## Introduction
