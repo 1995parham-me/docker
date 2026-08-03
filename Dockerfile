@@ -54,7 +54,8 @@ RUN adduser -D -u 1000 -s /bin/zsh fandogh && \
 
 HEALTHCHECK --interval=30s --timeout=5s CMD [ "true" ]
 
-USER fandogh
+# numeric UID so the host can always resolve it (fandogh)
+USER 1000
 WORKDIR /home/fandogh
 ENV HOME=/home/fandogh
 
