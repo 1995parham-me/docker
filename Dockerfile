@@ -42,7 +42,7 @@ COPY zshrc /etc/zsh/zshrc
 
 # Install NATS CLI from official GitHub releases (avoids stale nats-box image)
 ARG TARGETARCH
-ARG NATS_VERSION=0.3.2
+ARG NATS_VERSION=0.5.0
 RUN wget -q "https://github.com/nats-io/natscli/releases/download/v${NATS_VERSION}/nats-${NATS_VERSION}-linux-${TARGETARCH}.zip" -O /tmp/nats.zip && \
   unzip -o /tmp/nats.zip -d /tmp && \
   install "/tmp/nats-${NATS_VERSION}-linux-${TARGETARCH}/nats" /usr/local/bin/nats && \
